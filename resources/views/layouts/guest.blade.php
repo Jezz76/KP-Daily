@@ -21,5 +21,25 @@
         {{ $slot }}
         
         @livewireScripts
+        
+        <!-- Login Redirect Script -->
+        <script>
+            // Listen for successful login/register
+            document.addEventListener('livewire:navigated', function() {
+                // Check if user is authenticated and redirect if needed
+                if (window.location.pathname === '/login' || window.location.pathname === '/register') {
+                    setTimeout(function() {
+                        if (document.querySelector('[wire\\:loading]') && !document.querySelector('[wire\\:loading]').style.display) {
+                            window.location.href = '/dashboard';
+                        }
+                    }, 100);
+                }
+            });
+            
+            // Additional fallback for auth success
+            window.addEventListener('auth-success', function() {
+                window.location.href = '/dashboard';
+            });
+        </script>
     </body>
 </html>
