@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Activity;
-use Illuminate\Support\Facades\Cache;
+use App\Models\KpPeriod;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,13 +24,15 @@ class ActivityLog extends Component
 
     public function mount()
     {
-        // Cek apakah periode KP sudah diatur
-        $this->start_date = Cache::get('kp_start_date');
-        $this->end_date = Cache::get('kp_end_date');
+        // Cek apakah periode KP sudah diatur untuk user ini
+        $kpPeriod = Auth::user()->currentKpPeriod();
         
-        if (!$this->start_date || !$this->end_date) {
+        if (!$kpPeriod) {
             return redirect()->route('kp.settings');
         }
+        
+        $this->start_date = $kpPeriod->start_date->format('Y-m-d');
+        $this->end_date = $kpPeriod->end_date->format('Y-m-d');
     }
 
     public function addActivity()

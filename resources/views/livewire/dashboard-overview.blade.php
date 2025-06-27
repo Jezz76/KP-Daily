@@ -13,7 +13,25 @@
             </div>
         </div>
         
-        @if($start_date && $end_date)
+        @if($kp_period)
+            <!-- Info Perusahaan dan Pembimbing -->
+            @if($kp_period->company_name || $kp_period->supervisor_name)
+                <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    @if($kp_period->company_name)
+                        <div class="bg-white/10 rounded-lg p-3 border border-white/20">
+                            <div class="text-white/70 text-xs font-medium mb-1">Perusahaan/Instansi</div>
+                            <div class="text-sm font-semibold">{{ $kp_period->company_name }}</div>
+                        </div>
+                    @endif
+                    @if($kp_period->supervisor_name)
+                        <div class="bg-white/10 rounded-lg p-3 border border-white/20">
+                            <div class="text-white/70 text-xs font-medium mb-1">Pembimbing</div>
+                            <div class="text-sm font-semibold">{{ $kp_period->supervisor_name }}</div>
+                        </div>
+                    @endif
+                </div>
+            @endif
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- Tanggal Mulai -->
                 <div class="bg-white/10 rounded-lg p-3 border border-white/20">
@@ -41,6 +59,13 @@
                     <div class="text-white/60 text-xs mt-1">{{ $days_remaining }} hari lagi</div>
                 </div>
             </div>
+
+            @if($kp_period->description)
+                <div class="mt-4 bg-white/10 rounded-lg p-3 border border-white/20">
+                    <div class="text-white/70 text-xs font-medium mb-1">Deskripsi KP</div>
+                    <div class="text-sm">{{ $kp_period->description }}</div>
+                </div>
+            @endif
         @else
             <div class="text-center py-4">
                 <p class="text-white/80 mb-3 text-sm">Periode KP belum diatur</p>

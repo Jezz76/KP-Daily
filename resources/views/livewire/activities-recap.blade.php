@@ -61,31 +61,31 @@
                                 </svg>
                             </button>
                             
-                            <div id="exportMenu" class="hidden absolute right-0 mt-3 w-80 backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl shadow-2xl z-20 overflow-hidden">
+                            <div id="exportMenu" class="hidden absolute right-0 mt-3 w-80 bg-gray-800/95 border border-gray-600/50 rounded-xl shadow-2xl z-20 overflow-hidden">
                                 <div class="p-2">
                                     <button wire:click="exportToExcel" 
-                                        class="w-full text-left px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-all duration-150 flex items-center gap-3 group">
+                                        class="w-full text-left px-4 py-3 text-white hover:bg-gray-700/70 rounded-lg transition-all duration-150 flex items-center gap-3 group">
                                         <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                             </svg>
                                         </div>
                                         <div>
-                                            <div class="font-semibold">Export Data Standar</div>
-                                            <div class="text-xs text-purple-200/90">Tabel aktivitas tanpa gambar</div>
+                                            <div class="font-semibold text-white">Export Data Standar</div>
+                                            <div class="text-xs text-gray-300">Tabel aktivitas tanpa gambar</div>
                                         </div>
                                     </button>
                                     
                                     <button wire:click="exportToExcelWithImages" 
-                                        class="w-full text-left px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-all duration-150 flex items-center gap-3 group">
+                                        class="w-full text-left px-4 py-3 text-white hover:bg-gray-700/70 rounded-lg transition-all duration-150 flex items-center gap-3 group">
                                         <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-rose-500 rounded-lg flex items-center justify-center shadow-lg">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
                                         </div>
                                         <div>
-                                            <div class="font-semibold">Export dengan Gambar</div>
-                                            <div class="text-xs text-purple-200/90">Lengkap dengan bukti gambar</div>
+                                            <div class="font-semibold text-white">Export dengan Gambar</div>
+                                            <div class="text-xs text-gray-300">Lengkap dengan bukti gambar</div>
                                         </div>
                                     </button>
                                 </div>

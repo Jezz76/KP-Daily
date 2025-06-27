@@ -31,8 +31,6 @@ class MotivationWidget extends Component
 
     public function loadQuote()
     {
-        $this->isLoading = true;
-        
         // Try multiple APIs
         $quote = $this->fetchFromZenQuotes() ?? 
                  $this->fetchFromQuotable() ?? 
@@ -132,7 +130,19 @@ class MotivationWidget extends Component
 
     public function refreshQuote()
     {
+        \Log::info('Motivation Widget: Refresh quote button clicked');
+        
+        $this->isLoading = true;
+        
+        // Add a small delay to show loading state
+        usleep(500000); // 0.5 seconds
+        
         $this->loadQuote();
+        
+        // Dispatch browser event for feedback
+        $this->dispatch('quote-refreshed');
+        
+        \Log::info('Motivation Widget: Quote refreshed successfully');
     }
 
     public function render()

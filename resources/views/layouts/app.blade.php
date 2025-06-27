@@ -13,6 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="font-sans antialiased bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 overflow-x-hidden">
         <div class="min-h-screen flex relative">
@@ -230,5 +231,7 @@
                 border-radius: 1rem !important;
             }
         </style>
+        
+        @livewireScripts
     </body>
 </html>

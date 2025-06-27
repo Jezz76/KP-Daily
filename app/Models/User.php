@@ -50,4 +50,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Activity::class);
     }
+
+    /**
+     * Relasi ke periode KP
+     */
+    public function kpPeriods()
+    {
+        return $this->hasMany(KpPeriod::class);
+    }
+
+    /**
+     * Mendapatkan periode KP yang aktif
+     */
+    public function activeKpPeriod()
+    {
+        return $this->hasOne(KpPeriod::class)->where('is_active', true);
+    }
+
+    /**
+     * Mendapatkan periode KP yang sedang berlangsung
+     */
+    public function currentKpPeriod()
+    {
+        return $this->kpPeriods()->where('is_active', true)->first();
+    }
 }

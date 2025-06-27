@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Activity;
+use App\Models\KpPeriod;
 use Carbon\Carbon;
 
 class DashboardOverview extends Component
@@ -20,13 +20,17 @@ class DashboardOverview extends Component
     public $total_activities;
     public $last_activity_date;
     public $today_filled;
+    public $kp_period;
 
     public function mount()
     {
-        $this->start_date = Cache::get('kp_start_date');
-        $this->end_date = Cache::get('kp_end_date');
+        // Ambil periode KP aktif untuk user saat ini
+        $this->kp_period = Auth::user()->currentKpPeriod();
         
-        if ($this->start_date && $this->end_date) {
+        if ($this->kp_period) {
+            $this->start_date = $this->kp_period->start_date->format('Y-m-d');
+            $this->end_date = $this->kp_period->end_date->format('Y-m-d');
+            
             $start = Carbon::parse($this->start_date);
             $end = Carbon::parse($this->end_date);
             $today = Carbon::today();

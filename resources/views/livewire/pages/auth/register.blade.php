@@ -32,7 +32,16 @@ new #[Layout('layouts.guest')] class extends Component
 
         Auth::login($user);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        // Set session flag and use JavaScript redirect
+        session(['register_success' => true]);
+        $this->dispatch('register-success');
+        
+        // Alternative: use meta refresh as fallback
+        $this->js('
+            setTimeout(function() {
+                window.location.replace("' . route('dashboard') . '");
+            }, 100);
+        ');
     }
 }; ?>
 
@@ -532,4 +541,15 @@ new #[Layout('layouts.guest')] class extends Component
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
         }
     </style>
+    
+    <script>
+        // Handle register success redirect
+        window.addEventListener('auth-success', function() {
+        // Listen for register success event from Livewire
+        document.addEventListener('livewire:initialized', function() {
+            Livewire.on('register-success', function() {
+                window.location.href = '/dashboard';
+            });
+        });
+    </script>
 </div>
