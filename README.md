@@ -20,7 +20,6 @@
 - ⚙️ **KP Period Settings** - Pengaturan periode kerja praktik
 - 👤 **Account Management** - Manajemen profil dan keamanan akun
 - 🎨 **Modern Glass Morphism UI** - Desain yang modern dan responsif
-- 🚀 **High Performance** - Optimized untuk smooth scrolling >60fps
 - 🌙 **Consistent Theme** - Gradient purple/blue/pink yang konsisten
 
 ## 🎨 Design System
